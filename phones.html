@@ -220,6 +220,32 @@
 
 <div class="header-spacer"></div>
 
+<div class="search-container">
+  <input type="text" id="searchInput" oninput="searchProducts()" placeholder="🔍 ابحث عن اسم أو سعر الهاتف..." />
+</div>
+<style>
+.search-container {
+  margin: 10px auto 20px auto;
+  max-width: 400px;
+  padding: 0 10px;
+}
+#searchInput {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ff8000;
+  border-radius: 25px;
+  outline: none;
+  transition: 0.3s;
+  text-align: right;
+  font-family: 'Cairo', sans-serif;
+}
+#searchInput:focus {
+  border-color: #000;
+}
+</style>
+
+
 <h2>📱 الهواتف</h2>
 
 <div class="products-container" id="productsContainer"></div>
@@ -296,9 +322,21 @@
     showNotification(`تمت إضافة ${product.name} إلى السلة!`);
   }
 
-  function renderProducts(products, containerId){
+  
+function searchProducts() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = products.filter(p =>
+    p.name.toLowerCase().includes(query) ||
+    p.price.toString().includes(query)
+  );
+  renderProducts(filtered, "productsContainer");
+}
+
+
+function renderProducts(products, containerId){
     const container = document.getElementById(containerId);
     container.innerHTML = "";
+  if(products.length === 0){ container.innerHTML = "<p>❌ لا توجد نتائج مطابقة.</p>"; return; }
     products.forEach(p => {
       const div = document.createElement('div');
       div.className = 'product';
