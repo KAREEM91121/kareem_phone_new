@@ -186,6 +186,13 @@ header {
     90% {opacity: 1; transform: translateX(-50%) translateY(0);}
     100% {opacity: 0; transform: translateX(-50%) translateY(-20px);}
   }
+    /* ✅ إخفاء الشعار واسم كريم فون على الموبايل فقط */
+  @media (max-width: 768px) {
+    #logo,
+    .center-title {
+      display: none;
+    }
+  }
 </style>
 
 </head>
