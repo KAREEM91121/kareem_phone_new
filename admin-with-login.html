@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم - كريم فون</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      direction: rtl;
+    }
+    .hidden { display: none; }
+    h2 {
+      color: #ff6600;
+      text-align: center;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #ff6600;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e65c00;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- نموذج تسجيل الدخول -->
+<div id="loginSection">
+  <form onsubmit="return login()">
+    <h2>تسجيل الدخول</h2>
+    <label>اسم المستخدم:</label>
+    <input type="text" id="username" required>
+    <label>كلمة المرور:</label>
+    <input type="password" id="password" required>
+    <button type="submit">دخول</button>
+    <div class="error" id="errorMsg"></div>
+  </form>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="dashboardSection" class="hidden">
+  <h2>إضافة منتج جديد</h2>
+  <form id="productForm">
+    <label>اسم المنتج:</label>
+    <input type="text" id="name" required>
+    <label>القسم:</label>
+    <select id="category">
+      <option value="الهواتف">الهواتف</option>
+      <option value="الاكسسوارات">الاكسسوارات</option>
+      <option value="العروض">العروض</option>
+    </select>
+    <label>السعر (بالدينار العراقي):</label>
+    <input type="text" id="price" required>
+    <label>رابط الصورة:</label>
+    <input type="text" id="image" required>
+    <label>مواصفات المنتج:</label>
+    <textarea id="specs" rows="5" placeholder="مثال: \nالبطارية: 5000mAh\nالشاشة: AMOLED بحجم 6.7 إنش"></textarea>
+    <button type="button" onclick="generateFile()">إنشاء صفحة المنتج</button>
+  </form>
+</div>
+
+<script src="product-page-enhanced.js"></script>
+<script>
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (user === "admin" && pass === "1234") {
+      localStorage.setItem("loggedIn", "true");
+      showDashboard();
+    } else {
+      errorMsg.textContent = "بيانات الدخول غير صحيحة!";
+    }
+    return false;
+  }
+
+  function showDashboard() {
+    document.getElementById("loginSection").classList.add("hidden");
+    document.getElementById("dashboardSection").classList.remove("hidden");
+  }
+
+  // إذا كان مسجل دخول مسبقًا
+  window.onload = function() {
+    if (localStorage.getItem("loggedIn") === "true") {
+      showDashboard();
+    }
+  };
+</script>
+
+</body>
+</html>
