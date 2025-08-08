@@ -11,65 +11,55 @@
     background: #ffffff;
     text-align: center;
   }
-      /* === تصميم الوضع الداكن (Dark Mode) مفعل افتراضيًا === */
-    body {
-      background-color: #ffffff;
-      color: #000000;
-      font-family: 'Cairo', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-header {
-  background-color: #ff8000;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  position: relative;
-}
 
-#logo {
-  height: 40px;
-}
-
-.center-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-.company-name {
-  margin: 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  font-family: 'Cairo', sans-serif;
-}
-
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+  /* === تصميم الوضع الداكن (Dark Mode) مفعل افتراضيًا === */
+  body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
   header {
-      background-color: #ff8000;
-      color: white;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      position: relative;
+    background-color: #ff8000;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    position: relative;
   }
+
   #logo {
     position: absolute;
     top: 5px;
     right: 20px;
     height: 40px;
   }
+
+  .center-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .company-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   .dropbtn, .header-btn {
     background-color: #000000;
     color: white;
@@ -81,13 +71,16 @@ header {
     font-weight: bold;
     transition: background-color 0.3s;
   }
+
   .dropbtn:hover, .header-btn:hover {
     background-color: #ff8000;
   }
+
   .dropdown {
     position: relative;
     display: inline-block;
   }
+
   .dropdown-content {
     display: none;
     position: absolute;
@@ -99,6 +92,7 @@ header {
     border-radius: 0 0 8px 8px;
     text-align: right;
   }
+
   .dropdown-content a {
     color: #333;
     padding: 10px 16px;
@@ -106,13 +100,16 @@ header {
     display: block;
     font-weight: 600;
   }
+
   .dropdown-content a:hover {
     background-color: #ff8000;
     color: white;
   }
+
   .show {
     display: block;
   }
+
   .header-spacer {
     height: 50px;
   }
@@ -127,6 +124,7 @@ header {
     margin: 0 auto;
     justify-items: center;
   }
+
   .product {
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -136,15 +134,18 @@ header {
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s;
   }
+
   .product:hover {
     box-shadow: 0 0 10px #ff8000;
   }
+
   .product img {
     width: 100%;
     border-radius: 12px;
     max-height: 150px;
     object-fit: contain;
   }
+
   .product button {
     margin-top: 5px;
     margin: 3px;
@@ -157,6 +158,7 @@ header {
     font-size: 14px;
     transition: background-color 0.3s;
   }
+
   .product button:hover {
     background-color: #ff8000;
   }
@@ -177,16 +179,27 @@ header {
     z-index: 10000;
     font-family: 'Cairo', sans-serif;
   }
+
   #notification.show {
     display: block !important;
     animation: fadeinout 3s forwards;
   }
+
   @keyframes fadeinout {
     0% {opacity: 0; transform: translateX(-50%) translateY(-20px);}
     10% {opacity: 1; transform: translateX(-50%) translateY(0);}
     90% {opacity: 1; transform: translateX(-50%) translateY(0);}
     100% {opacity: 0; transform: translateX(-50%) translateY(-20px);}
   }
+
+  /* ✅ إخفاء الشعار واسم كريم فون على الموبايل فقط */
+  @media (max-width: 768px) {
+    #logo,
+    .center-title {
+      display: none;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -269,6 +282,7 @@ header {
   function toggleDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
+
   window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       let dropdowns = document.getElementsByClassName("dropdown-content");
