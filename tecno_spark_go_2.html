@@ -1,0 +1,58 @@
+
+    <!DOCTYPE html>
+    <html lang="ar" dir="rtl">
+    <head>
+      <meta charset="UTF-8">
+      <title>Tecno Spark Go 2024 - المواصفات</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        body {
+          font-family: 'Cairo', sans-serif;
+          background-color: #f8f8f8;
+          padding: 20px;
+          color: #333;
+          text-align: center;
+        }
+        img {
+          width: 250px;
+          margin-bottom: 20px;
+          border-radius: 12px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+          color: #ff6600;
+          margin-bottom: 20px;
+        }
+        .spec-box {
+          background: white;
+          margin: 10px auto;
+          padding: 15px;
+          border-radius: 12px;
+          max-width: 500px;
+          text-align: right;
+          font-size: 18px;
+          box-shadow: 0 0 8px rgba(0,0,0,0.08);
+        }
+      </style>
+    </head>
+    <body>
+
+    <h1>Tecno Spark Go 2024 - المواصفات</h1>
+    <img src="https://cdn.example.com/tecno_spark_go_2.jpg" alt="Tecno Spark Go 2024">
+
+    <div id="specs"></div>
+
+    <script>
+      const specs = ['الشاشة: 6.6 إنش IPS LCD، دقة HD+، معدل تحديث 90Hz', 'المعالج: Unisoc T606 (12nm)', 'الكاميرا الخلفية: 13MP + AI', 'الكاميرا الأمامية: 8MP', 'البطارية: 5000 مللي أمبير، شحن 10W', 'نظام التشغيل: Android 13 Go Edition', 'السعة: 64GB / 4GB RAM', 'ميزات إضافية: بصمة خلفية، راديو FM'];
+      const container = document.getElementById("specs");
+      specs.forEach(spec => {
+        const div = document.createElement("div");
+        div.className = "spec-box";
+        div.textContent = spec;
+        container.appendChild(div);
+      });
+    </script>
+
+    </body>
+    </html>
+    

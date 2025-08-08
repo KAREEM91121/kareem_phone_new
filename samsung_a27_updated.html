@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   مواصفات Samsung Galaxy A27 - رسمياً
+  </title>
+  <style>
+   body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0; padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #121212;
+      color: #ddd;
+    }
+    img.phone-image {
+      max-width: 300px;
+      width: 80%;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255, 128, 0, 0.6);
+    }
+    .spec-box {
+      background: white;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 400px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: right;
+      font-size: 18px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode .spec-box {
+      background: #222;
+      box-shadow: 0 0 12px rgba(255, 128, 0, 0.8);
+      color: #ddd;
+    }
+    button.back-button {
+      margin-top: 30px;
+      background-color: #ff8000;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 20px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button.back-button:hover {
+      background-color: #ff9c33;
+    }
+    /* زر الوضع الداكن */
+    #darkModeToggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #ff8000;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      z-index: 1000;
+    }
+    #darkModeToggle:hover {
+      background-color: #ff9c33;
+    }
+    /* زر أضف إلى السلة */
+    .add-to-cart-button {
+      margin-top: 20px;
+      background-color: #ff8000;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .add-to-cart-button:hover {
+      background-color: #ff9c33;
+    }
+  </style>
+ </head>
+ <body>
+  <button id="darkModeToggle" title="تبديل الوضع الداكن">
+   🌙
+  </button>
+  <h1>
+   مواصفات Samsung Galaxy A27 - رسمياً
+  </h1>
+  <img alt="Samsung Galaxy A27" class="phone-image" src="https://cdn.example.com/samsung_a27.jpg"/>
+  <div class="spec-box">
+   الشاشة: 6.5 إنش Super AMOLED، معدل تحديث 90Hz
+  </div>
+  <div class="spec-box">
+   المعالج: Exynos أو Snapdragon (حسب المنطقة)
+  </div>
+  <div class="spec-box">
+   الكاميرا الخلفية: ثلاثية بدقة 50MP + 5MP + 2MP
+  </div>
+  <div class="spec-box">
+   الكاميرا الأمامية: 13MP
+  </div>
+  <div class="spec-box">
+   البطارية: 5000 مللي أمبير مع شحن سريع 25W
+  </div>
+  <div class="spec-box">
+   نظام التشغيل: Android 14 مع One UI
+  </div>
+  <div class="spec-box">
+   السعة: 128/256 جيجابايت
+  </div>
+  <div class="spec-box">
+   ميزات إضافية: بصمة جانبية، دعم OTG
+  </div>
+  <button class="add-to-cart-button" onclick="addToCart('Samsung Galaxy A27', 770000)">
+   🛒 أضف إلى السلة
+  </button>
+  <button class="back-button" onclick="window.location.href='index.html'">
+   ⬅ العودة إلى القائمة الرئيسية
+  </button>
+  <script>
+   // وضع الداكن
+  const darkModeToggle = document.getElementById('darkModeToggle');
+
+  if(localStorage.getItem('darkMode') === 'enabled'){
+    document.body.classList.add('dark-mode');
+    darkModeToggle.textContent = '☀️';
+  }
+
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    if(document.body.classList.contains('dark-mode')){
+      localStorage.setItem('darkMode', 'enabled');
+      darkModeToggle.textContent = '☀️';
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+      darkModeToggle.textContent = '🌙';
+    }
+  });
+
+  // سلة التسوق مع التخزين المحلي
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`تمت إضافة ${name} إلى السلة!`);
+  }
+  </script>
+ </body>
+</html>

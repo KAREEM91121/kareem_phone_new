@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>كريم فون - الإكسسوارات</title>
+<style>
+   body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0; padding: 0;
+    background: #f9f9f9;
+    text-align: center;
+  }
+      /* === تصميم الوضع الداكن (Dark Mode) مفعل افتراضيًا === */
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+header {
+  background-color: #ff8000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+}
+
+#logo {
+  height: 40px;
+}
+
+.center-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.company-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Cairo', sans-serif;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+  header {
+      background-color: #ff8000;
+      color: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      position: relative;
+  }
+  #logo {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    height: 40px;
+  }
+  .dropbtn, .header-btn {
+    background-color: #000000;
+    color: white;
+    padding: 10px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .dropbtn:hover, .header-btn:hover {
+    background-color: #ff8000;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 10001;
+    right: 0;
+    border-radius: 0 0 8px 8px;
+    text-align: right;
+  }
+  .dropdown-content a {
+    color: #333;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+  }
+  .dropdown-content a:hover {
+    background-color: #ff8000;
+    color: white;
+  }
+  .show {
+    display: block;
+  }
+  .header-spacer {
+    height: 50px;
+  }
+
+  /* شبكة المنتجات */
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    padding: 20px 10px 40px 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-items: center;
+  }
+  .product {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+  }
+  .product:hover {
+    box-shadow: 0 0 10px #ff8000;
+  }
+  .product img {
+    width: 100%;
+    border-radius: 12px;
+    max-height: 150px;
+    object-fit: contain;
+  }
+  .product button {
+    margin-top: 5px;
+    margin: 3px;
+    background-color: #ff8000;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  .product button:hover {
+    background-color: #ff8000;
+  }
+
+  /* نوتي فاي */
+  #notification {
+    display:none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 10000;
+    font-family: 'Cairo', sans-serif;
+  }
+  #notification.show {
+    display: block !important;
+    animation: fadeinout 3s forwards;
+  }
+  @keyframes fadeinout {
+    0% {opacity: 0; transform: translateX(-50%) translateY(-20px);}
+    10% {opacity: 1; transform: translateX(-50%) translateY(0);}
+    90% {opacity: 1; transform: translateX(-50%) translateY(0);}
+    100% {opacity: 0; transform: translateX(-50%) translateY(-20px);}
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <img id="logo" src="https://www2.0zz0.com/2025/08/02/13/788516909.jpg" alt="شعار كريم فون" />
+      <div class="center-title">
+    <h1 class="company-name">كريم فون</h1>
+  </div>
+  <div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn">📂 الأقسام</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="index.html">📂 الرئيسية</a>
+      <a href="phones.html">📱 الهواتف</a>
+      
+    </div>
+  </div>
+  <button class="header-btn" onclick="window.location.href='login.html'">🔒 تسجيل دخول</button>
+  <button class="header-btn" onclick="window.location.href='cart.html'">🛒 السلة</button>
+</header>
+
+<div class="header-spacer"></div>
+
+<h2>🎧 الإكسسوارات</h2>
+
+<div class="products-container" id="productsContainer"></div>
+
+<div id="notification"></div>
+
+<script>
+  const products = [
+    {id:101, name:"سماعة R50iNC", price:35000, image:"https://www2.0zz0.com/2025/08/07/11/407536128.jpg", specsPage:"specs-bluetooth.html"},
+    {id:102, name:"ايس فاست W1", price:25000, image:"https://www2.0zz0.com/2025/08/07/12/521327915.jpg", specsPage:"specs-cable.html"},
+    {id:103, name:"ايس فاست الطوك n4", price:25000, image:"https://www2.0zz0.com/2025/08/07/13/805488723.png", specsPage:"specs-case.html"}
+  ];
+
+  function showNotification(message) {
+    const notif = document.getElementById('notification');
+    notif.textContent = message;
+    notif.classList.add('show');
+    setTimeout(() => {
+      notif.classList.remove('show');
+    }, 3000);
+  }
+
+  function addToCart(product){
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existing = cart.find(item => item.id === product.id);
+    if(existing){
+      existing.quantity = (existing.quantity || 1) + 1;
+    } else {
+      cart.push({...product, quantity: 1});
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`تمت إضافة ${product.name} إلى السلة!`);
+  }
+
+  function renderProducts(products, containerId){
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    products.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>السعر: ${p.price} د.ع</p>
+        <button onclick='addToCart(${JSON.stringify(p)})'>➕ إضافة إلى السلة</button>
+        <button onclick="window.location.href='${p.specsPage}'">ℹ️ عرض المواصفات</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  renderProducts(products, "productsContainer");
+
+  function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      let dropdowns = document.getElementsByClassName("dropdown-content");
+      for (let i=0; i<dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if(openDropdown.classList.contains('show')){
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

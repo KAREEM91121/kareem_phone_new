@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #070707;
+  margin: 0; padding: 0;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #222;
+  color: #eee;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: #ff6600;
+  color: white;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 700;
+  flex-grow: 1;
+}
+
+/* تصغير حجم الأزرار */
+.btn {
+  background: white;
+  color: #ff6600;
+  border: none;
+  padding: 0.35rem 0.8rem;
+  font-weight: 700;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: #ffa64d;
+}
+
+.admin-btn {
+  background: #333;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.8rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 15px 15px 0 0;
+  margin-bottom: 1rem;
+}
+
+.product-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #ff6600;
+}
+
+.product-price {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.btn-specs {
+  background-color: #007bff;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  font-size: 0.85rem;
+}
+
+.btn-specs:hover {
+  background-color: #0056b3;
+}
+
+.btn-add {
+  background-color: #28a745;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  font-size: 0.85rem;
+}
+
+.btn-add:hover {
+  background-color: #1e7e34;
+}
+
+.btn-wp {
+  background-color: #25d366;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  font-size: 0.85rem;
+}
+
+.btn-wp:hover {
+  background-color: #128c4a;
+}
+
+/* Dropdown list for sections */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.dropdown-list li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-list li:hover {
+  background-color: #ffebd5;
+}
+
+.dropdown-list a {
+  text-decoration: none;
+  color: #ff6600;
+  font-weight: 700;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Dark mode overrides */
+
+body.dark header {
+  background: #b35400;
+}
+
+body.dark .product-card {
+  background: #444;
+  color: #eee;
+  box-shadow: none;
+}
+
+body.dark .btn-specs {
+  background-color: #3399ff;
+}
+
+body.dark .btn-specs:hover {
+  background-color: #0077ff;
+}
+
+body.dark .btn-add {
+  background-color: #3cc03c;
+}
+
+body.dark .btn-add:hover {
+  background-color: #1f7f1f;
+}
+
+body.dark .btn-wp {
+  background-color: #45d878;
+}
+
+body.dark .btn-wp:hover {
+  background-color: #0e4b12;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f2f2f2;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container, .dashboard {
+  margin: 100px auto;
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+input[type="text"], input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button, .btn {
+  padding: 10px 20px;
+  background-color: orange;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; /* قلل المسافة بين المنتجات (مثلاً 8px بدلاً من 20px أو أكبر) */
+}
+
+.product {
+  margin: 4px; /* قلل الهامش حول كل منتج */
+  /* باقي التنسيقات كما هي */
+}

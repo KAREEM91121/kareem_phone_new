@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مواصفات المنتج</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    /* تنسيق عام للجسم */
+    body {
+      font-family: 'Cairo', sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff7f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* عنوان المنتج */
+    h1 {
+      color: #ff6600;
+      margin-bottom: 1rem;
+    }
+    /* صورة المنتج */
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.15);
+    }
+    /* زر العودة */
+    .btn-back {
+      align-self: flex-start;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      background: #ff6600;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 3px 6px rgb(255 102 0 / 0.5);
+      transition: background-color 0.3s;
+    }
+    .btn-back:hover {
+      background: #cc5200;
+    }
+    /* سعر المنتج */
+    .price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    /* حاوية المواصفات */
+    .spec-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    /* كل مربع مواصفات */
+    .spec-box {
+      background: #ff6600;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 3px 6px rgb(255 102 0 / 0.4);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <!-- زر للعودة للمتجر -->
+  <a href="index.html" class="btn-back">⬅ العودة للمتجر</a>
+  <!-- اسم المنتج -->
+  <h1 id="productName">جارٍ التحميل...</h1>
+  <!-- صورة المنتج -->
+  <img id="productImage" src="" alt="" />
+  <!-- سعر المنتج -->
+  <p class="price" id="productPrice"></p>
+  <!-- حاوية لعرض المواصفات بشكل مربعات -->
+  <div class="spec-container" id="specContainer"></div>
+
+  <script>
+    // بيانات افتراضية للمنتجات في الأقسام المختلفة
+    const defaultProducts = {
+      phones: [
+        {id:1,name:"iPhone 15 Pro",price:1200,image:"https://via.placeholder.com/300x180?text=iPhone+15+Pro",specs:"شاشة 6.1 بوصة، كاميرا ثلاثية، معالج A17، بطارية 3095 مللي أمبير."},
+        {id:2,name:"Samsung Galaxy S24",price:1050,image:"https://via.placeholder.com/300x180?text=Samsung+S24",specs:"شاشة 6.2 بوصة، كاميرا رباعية، معالج Exynos 2400، بطارية 4000 مللي أمبير."}
+      ],
+      accessories: [
+        {id:101,name:"سماعة لاسلكية",price:150,image:"https://via.placeholder.com/300x180?text=Wireless+Headphones",specs:"سماعة بلوتوث عالية الجودة، بطارية تدوم 8 ساعات."},
+        {id:102,name:"غطاء حماية",price:25,image:"https://via.placeholder.com/300x180?text=Phone+Case",specs:"غطاء سيليكون ناعم يحمي هاتفك من الصدمات."}
+      ],
+      offers: [
+        {id:201,name:"عرض خاص - هاتف + سماعة",price:1200,image:"https://via.placeholder.com/300x180?text=Special+Offer",specs:"اشتري هاتف iPhone 15 Pro مع سماعة لاسلكية بسعر خاص."}
+      ]
+    };
+
+    // دالة للحصول على القيم من رابط الصفحة (?section=phones&id=1)
+    function getQueryParams() {
+      const params = {};
+      location.search.substring(1).split("&").forEach(pair => {
+        const [key, value] = pair.split("=");
+        params[key] = decodeURIComponent(value);
+      });
+      return params;
+    }
+
+    // تحميل المنتج وعرض معلوماته ومواصفاته
+    function loadProduct() {
+      const params = getQueryParams();
+      const section = params.section;
+      const id = Number(params.id);
+
+      // التحقق من وجود القسم والمنتج
+      if(!section || !id || !defaultProducts[section]) {
+        alert("المنتج غير موجود");
+        window.location.href = "index.html";
+        return;
+      }
+
+      // البحث عن المنتج حسب الرقم
+      const product = defaultProducts[section].find(p => p.id === id);
+      if(!product) {
+        alert("المنتج غير موجود");
+        window.location.href = "index.html";
+        return;
+      }
+
+      // عرض اسم وصورة وسعر المنتج
+      document.getElementById("productName").textContent = product.name;
+      document.getElementById("productImage").src = product.image;
+      document.getElementById("productImage").alt = product.name;
+      document.getElementById("productPrice").textContent = `السعر: ${product.price} $`;
+
+      // تفريغ الحاوية ثم تقسيم المواصفات وعرضها كل واحدة في مربع
+      const specContainer = document.getElementById("specContainer");
+      specContainer.innerHTML = "";
+
+      // تقسيم النص حسب الفواصل والنقاط
+      const specsArray = product.specs.split(/[،.]/).map(s => s.trim()).filter(s => s.length > 0);
+
+      // إنشاء صناديق للمواصفات وإضافتها للحاوية
+      specsArray.forEach(spec => {
+        const div = document.createElement("div");
+        div.className = "spec-box";
+        div.textContent = spec;
+        specContainer.appendChild(div);
+      });
+    }
+
+    // استدعاء تحميل المنتج عند فتح الصفحة
+    loadProduct();
+  </script>
+</body>
+</html>
